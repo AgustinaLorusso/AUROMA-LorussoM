@@ -1,3 +1,5 @@
+
+//Funcion que muestra mensaje de valor total de excursion,actividades y cantidad de personas y luego el valor total de compra.
 function productos(){
     let aniadir="si";
     let total=0;
@@ -12,7 +14,7 @@ function productos(){
     }
     alert("Valor total compra: "+total);
 }
-
+//Funcion que pide el ingreso de la excursion elegida y valida ese dato.
 function validarP(){
     let producto=prompt("Ingrese la letra de la excursion deseada\n A = Caminata por el glaciar Perito Moreno\n B = Kiteboarding en Italia\n C = Esqui en Bulgaria");
     producto=producto.toLowerCase();
@@ -22,6 +24,7 @@ function validarP(){
     }
     return(producto);
 }
+//Funcion que pide la cantidad de personas a asistir a excursion y valida el dato
 function validarC(){
     let cantidad=prompt("Ingrese cantidad de personas que asistiran a la actividad");
     while ((cantidad=="")||((isNaN(cantidad)==true))){
@@ -30,7 +33,7 @@ function validarC(){
     }
     return((parseInt(cantidad)));
 }
-productos()
+//  Funcion que calcula el valor de cada excursion segun la cantidad de personas que asistiran
 
 function calcularvalor(letra,numero){
     let valor=0;
@@ -47,7 +50,7 @@ function calcularvalor(letra,numero){
     }
     return(valor);
 }
-
+//Funcion que relaciona las letras con las excursiones dadas y retorna el nombre de la excursion
 function nombreExcursion(letra){
     let nombre="";
     switch(letra){
@@ -63,6 +66,7 @@ function nombreExcursion(letra){
     }
     return(nombre);
 }
+//Funcion que se encargara de preguntar al usuario si va a seguir con otra compra  o quiere terminar 
 function validarA(){
     let continuar=prompt("Para añadir otra excursion ingrese SI, si quiere terminar ingrese NO");
     continuar=continuar.toLowerCase();
@@ -73,5 +77,5 @@ function validarA(){
     }
     return(continuar);
 }
-
-
+//Llamo a la funcion productos
+productos()
