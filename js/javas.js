@@ -1,22 +1,27 @@
 
 //Clase que tiene como atributo el nombre,precio y numero asociados a la excursion.
-class Excursiones{
+class Excursion{
     constructor(nombre,precio,nroExcursion){
         this.nombre=nombre;
         this.precio=precio;
         this.nroExcursion=nroExcursion;
     }
 }
-//Arreglo de excursiones
-const excursion1= new Excursiones("caminata por el perito moreno",1900,1);
-const excursion2= new Excursiones("kiteboarding en italia",2900,2);
-const excursion3=new Excursiones("esqui por bulgaria",3900,3);
+//Arreglo de excursiones dentro de un array
+const excursiones=[
+    new Excursion("caminata por el perito moreno",1900,1),
+    new Excursion("kiteboarding en italia",2900,2),
+    new Excursion("esqui por bulgaria",3900,3),
+]
+
+const msjeDatoNoValido="El dato ingresado no es valido.\n Intentelo nuevamente";
+const msjeIngresoCantPersonas="Ingrese cantidad de personas que asistiran a la actividad";
 
 //Funcion que muestra mensaje de valor total de excursion,actividades y cantidad de personas y luego el valor total de compra
 function menuPrincipal(){
     let continuar="si";
     //array de excursiones disponibles
-    const listaExcursiones=["caminata por el perito moreno","kiteboarding en italia","esqui por bulgaria"];
+    //const listaExcursiones=["caminata por el perito moreno","kiteboarding en italia","esqui por bulgaria"];
     //Array de lista de excursiones q elije el usuario y lista de sus precios correspondientes
     const excursionesElegidas=[];
     const listaPrecios=[];
@@ -44,33 +49,35 @@ function menuPrincipal(){
 
 
 }
-//Funcion que pide el ingreso de la excursion elegida y valida ese dato.
+
+//Funcion que muestra el menu de excursiones,pide ingreso de excursion elegida y valida ese dato.
 function ingresoExcursion(){
-    //Uso la clase Excursiones para mostrar las distintas actividades y su precio.
-    const menu =("EXCURSIONES\n"+"1."+excursion1["nombre"]+"  Precio:"+excursion1["precio"]+"\n"+"2."+excursion2["nombre"]+"  Precio:"+excursion2["precio"]+"\n"
-    +"3."+excursion3["nombre"]+"  Precio:"+excursion3["precio"])
-    alert(menu)
-    let actividades = prompt("Ingrese el numero de la excursion deseada:\n Ingrese enter para ver nuevamente el menu.")
-    while (actividades===""){
-        alert(menu);
-    actividades = prompt("Ingrese el numero de la excursion deseada:\n Ingrese enter para ver nuevamente el menu.");
+    //Variable menu encargada de mostrar las excursiones disponibles.
+    let menu ="EXCURSIONES\n";
+    for (const excursion of excursiones){
+        menu +=`${excursion.nroExcursion} - ${excursion.nombre} - $${excursion.precio}\n`;
     }
-    actividades=parseInt(actividades);
-    while (actividades!=1 && actividades!=2 && actividades!=3){
-        alert("El dato ingresado no es valido, Ingrese nuevamente");
-        actividades = prompt("Ingrese el numero de la excursion deseada:\n Ingrese enter para ver nuevamente el menu.");
+    menu+="Ingrese el numero de la excursion elegida:";
+    let nroActividad= parseint(prompt(menu));
+    //Busca si el numero esta en arreglo de excursiones.
+    let verificarNroExcursion= excursiones.find(excursion => excursion.nroExcursion === nroActividad);
+    while (verificarNroExcursion === undefined){
+        alert(msjeDatoNoValido)
+        nroActividad= parseint(prompt(menu));
     }
-    return(actividades);
+    return(nroActividad);
 }
-//Funcion que pide la cantidad de personas a asistir a excursion y valida el dato
+
+//Funcion que pide la cantidad de personas a asistir a excursion y valida el dato.
 function ingresoCantPersonas(){
-    let cantidad=prompt("Ingrese cantidad de personas que asistiran a la actividad");
+    let cantidad=trim(prompt(msjeIngresoCantPersonas));
     while (cantidad==""||isNaN(cantidad)|| cantidad<=0){
-        alert("El dato ingresado no es valido, Ingrese nuevamente");
-        cantidad=prompt("Ingrese cantidad de personas que asistiran a la actividad");
+        alert(msjeDatoNoValido);
+        cantidad=prompt(msjeIngresoCantPersonas);
     }
     return(parseInt(cantidad));
 }
+
 //  Funcion que calcula el valor de cada excursion segun la cantidad de personas que asistiran
 function calculoPrecio(nroExcursion,numero){
     let valor=0;
