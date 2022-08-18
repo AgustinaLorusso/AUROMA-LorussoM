@@ -1,7 +1,9 @@
 
 //Boton de calculo de valor y el form 
-let btnValor= document.getElementById("btnValor");
-let form=document.getElementById("excursiones");
+const btnValor= document.getElementById("btnValor");
+const form=document.getElementById("excursiones");
+const btnAgregar=document.getElementById("agregar");
+//const muestraCompras=document.getElementById("compras");
 
 //Clase que tiene como atributo el nombre,precio y numero asociados a la excursion.
 class Excursion{
@@ -37,7 +39,7 @@ function ingresoCantPersonas(){
 }
 
 function ingresoExcursion(){
-    let id =document.getElementById("nombreExcursion").value;
+    const id =document.getElementById("nombreExcursion").value;
     let datosExcursion=excursiones.find(excursion => excursion.nroExcursion  === parseInt(id));
     if (datosExcursion === undefined){
         datosExcursion=msjeIdNovalido;
@@ -57,18 +59,31 @@ form.onclick = function(e){
 
 btnValor.onclick = function(e){
     e.preventDefault();
-    let datosExcursion=ingresoExcursion();
-    let cantPersonas=ingresoCantPersonas();
+    const datosExcursion=ingresoExcursion();
+    const cantPersonas=ingresoCantPersonas();
     if (datosExcursion===msjeIdNovalido){
         document.getElementById('print').innerHTML=msjeIdNovalido;
     } else if (cantPersonas===msjeDatoNoValido) {
         document.getElementById('print').innerHTML=msjeDatoNoValido;
     }else{
-        let valor=calculoPrecio(datosExcursion,cantPersonas);
-        let msjeValor=`El valor de la excursion es de $${valor}`
+        const valor=calculoPrecio(datosExcursion,cantPersonas);
+        const msjeValor=`El valor de la excursion es de $${valor}`
         document.getElementById('print').innerHTML=msjeValor;
     } 
 }
+
+//cards de destinos 
+/*function crearCardsExcursiones(){
+    excursiones.forEach(element => {
+        const nodo =document.createElement('div');
+    });
+}*/
+
+
+
+
+
+
 
 
 
