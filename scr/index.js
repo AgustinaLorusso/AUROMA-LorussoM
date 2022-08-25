@@ -126,6 +126,7 @@ function agregarCarrito(e) {
     renderizarCarrito();
 }
 
+//funcion que elimina del carrito
 function EliminarDeCarrito(e){
     const idProdAEliminar = e.target.getAttribute('eliminar');
     const posicionAEliminar=carritoDeCompras.indexOf(idProdAEliminar)
