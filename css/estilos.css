@@ -13,8 +13,11 @@
 .colorGrisClaro{
     background-color: #fffcfc;
 }
+.colorGrismedio{
+    background-color: #c7c7c7;
+}
 .header{
-    background-color: #A1DCDC;
+    background-color: rgb(229, 222, 222);
     font-family: 'Libre Baskerville', serif;
 }
 .nav{
@@ -25,6 +28,28 @@
     width: 15%;
 }
 .main{
-    background-color: #bfdcdc;
+    background-color: white;
     font-family: 'Libre Baskerville', serif;
+}
+
+.imgEstilo{
+    height: 25rem;
+}
+.cardEstilo{
+    width: 25rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.divProductos{
+    width: 97%;
+}
+.estiloCarrito{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #D9D9D9;
+    width: 40%;
+}
+.imgCarrito{
+   height: 350px;
+   width: 300px;
 }
