@@ -10,7 +10,7 @@ class Excursion{
 export const excursiones=[
     new Excursion(1,"PARIS",1900,'./assets/paris.jpg'),
     new Excursion(2,"AMALFI COAST",2900,'./assets/amalfi coast.jpg'),
-    new Excursion(3,"SANTORINI",3900,'./assets/santorini.jpg'),
+    new Excursion(3,"SUIZA",3900,'./assets/suiza.jpg'),
 ]
 
 
