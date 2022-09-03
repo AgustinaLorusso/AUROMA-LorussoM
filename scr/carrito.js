@@ -20,14 +20,39 @@ function valor(){
     return(msje);
 }
 
-//funcion que elimina del carrito
-function EliminarDeCarrito(e){
-    const idProdAEliminar = e.target.getAttribute('eliminar');
-    const posicionAEliminar=listaProductos.indexOf(idProdAEliminar)
-    listaProductos.splice((posicionAEliminar),1);
-    //modifico el sessionStorage
-    sessionStorage.setItem('carrito', JSON.stringify(listaProductos));
-    renderizarCarrito();
+//funcion que muestra un alert y elimina del carrito
+function EliminarDeCarrito(e){   
+ const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: 'btn btn-success',
+      cancelButton: 'btn btn-danger'
+    },
+    buttonsStyling: false
+  })
+  
+  swalWithBootstrapButtons.fire({
+    title: 'Estas seguro que quieres eliminar la excursion?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Si, eliminar',
+    cancelButtonText: 'No, cancelar',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.isConfirmed) {
+      swalWithBootstrapButtons.fire(
+        'Eliminado',
+        'La excursion se elimino del carrito',
+        'success'
+      )
+      const idProdAEliminar = e.target.getAttribute('eliminar');
+      const posicionAEliminar=listaProductos.indexOf(idProdAEliminar)
+      listaProductos.splice((posicionAEliminar),1);
+      //modifico el sessionStorage
+      sessionStorage.setItem('carrito', JSON.stringify(listaProductos));
+      renderizarCarrito();
+    }
+  })
+   
 }
 
 
@@ -62,7 +87,7 @@ function renderizarCarrito(){
             //IMAGEN
             const imgCarrito = document.createElement('img');
             imgCarrito.classList.add('imgCarrito','rounded-start')
-            imgCarrito.setAttribute('src', miProducto.imagen);
+            imgCarrito.setAttribute('src', `.${miProducto.imagen}`);
             //BODY
             const cardCarritoBody = document.createElement('div');
             cardCarritoBody.classList.add('card-body')
@@ -100,5 +125,6 @@ function renderizarCarrito(){
     mostrarCarrito.appendChild(valorTotal);
    
 }
+
 
 renderizarCarrito()

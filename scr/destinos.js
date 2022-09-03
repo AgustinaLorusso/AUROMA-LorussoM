@@ -23,7 +23,7 @@ function renderizarMuestra(){
     estrImagen.classList.add('w-50');
     const imagen = document.createElement('img');
     imagen.classList.add('card-img','img-producto');
-    imagen.setAttribute('src', producto.imagen);
+    imagen.setAttribute('src', `.${producto.imagen}`);
     //BODY DE LA CARD
     const cardBody = document.createElement('div');
     cardBody.classList.add('card-body','w-75');
