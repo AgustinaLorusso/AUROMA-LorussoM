@@ -1,19 +1,18 @@
 //Importo el arreglo de excursiones
 import { excursiones } from "./items.js";
 
-//Arrays
-let carritoDeCompras=[];
 
 //DOM
 const productos = document.getElementById('productos');
-const carrito = document.getElementById('carrito');
 
-//Cards de destinos
+
+
+//CARDS DE DESTINOS
 function renderizarProductos(){
     excursiones.forEach((element)=>{
         //ESTRUCTURA
         const estructura = document.createElement('div');
-        estructura.classList.add('card','col','colorGris','cardEstilo','mx-4');
+        estructura.classList.add('card','col','colorGris','cardEstilo','mx-4','formulario');
         // IMAGEN
         const imagen = document.createElement('img');
         imagen.classList.add('card-img','imgEstilo','mt-3');
@@ -31,11 +30,9 @@ function renderizarProductos(){
         precio.textContent = `${element.precio}`;
         //BOTON
         const btn = document.createElement('button');
-        precio.classList.add('card-text','text-center','agregarCompra');
-        btn.setAttribute('agregar',element.id);
-        btn.addEventListener('click', agregarCarrito);
-        btn.textContent ='AGREGAR'
-
+        btn.setAttribute('redirigir',element.id);
+        btn.addEventListener('click',redirigir);
+        btn.textContent ='+ INFO'
 
         //INSERTO
         cardBody.appendChild(titulo);
@@ -47,8 +44,38 @@ function renderizarProductos(){
     } )
     
 }
+
+function redirigir(e){
+    const idProducto = e.target.getAttribute('redirigir');
+    window.location.href = `./destinos.html?id=${idProducto}`;
+}
+
+//DOM
+/*const cantidad = document.getElementsByClassName('agregarCompra');
+const formcnt = document.getElementsByClassName('formulario');
+/*cantidad.onclick = function(e){
+    //estructura
+    const cntEstructura=document.createElement('div');
+    const ingreso=document.createElement('input');
+    ingreso.textContent='Cantidad de pasajeros';
+    cntEstructura.appendChild(ingreso);
+    formcnt.appendChild(cntEstructura);
+}*/
+
+//Funcion cantidad de pasajeros
+/*cntPasajeros(e){
+    //estructura
+    const cntEstructura=document.createElement('div');
+    const ingreso=document.createElement('input');
+    ingreso.textContent='Cantidad de pasajeros';
+    cntEstructura.appendChild(ingreso);
+    cantidad.appendChild(cntEstructura);
+}*/
+
+//FUNCIONES DEL CARRTIO
+
 //Funcion valor total
-function valor(){
+/*function valor(){
     let valorCompra =0;
     carritoDeCompras.forEach((element)=>{
         const producto = excursiones.find(productoElegido => productoElegido.id === parseInt(element));
@@ -58,13 +85,13 @@ function valor(){
     return(msje);
 }
 //Funcion que agrega el producto al carrito
-function agregarCarrito(e) {
+/*function agregarCarrito(e) {
     carritoDeCompras.push(e.target.getAttribute('agregar'));
     renderizarCarrito();
-}
+}*/
 
 //funcion que elimina del carrito
-function EliminarDeCarrito(e){
+/*function EliminarDeCarrito(e){
     const idProdAEliminar = e.target.getAttribute('eliminar');
     const posicionAEliminar=carritoDeCompras.indexOf(idProdAEliminar)
     carritoDeCompras.splice((posicionAEliminar),1);
@@ -129,11 +156,20 @@ function renderizarCarrito(){
     valorTotal.textContent=valor();
     carrito.appendChild(valorTotal);  
    
-}
+}*/
 
 
 
-renderizarCarrito();
+
+//FILTRADO DE PRODUCTOS
+
+//DOM
+const buscador = document.getElementById('buscador');
+
+
+
+
+//renderizarCarrito();
 renderizarProductos();
 
 
