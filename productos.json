@@ -1,0 +1,7 @@
+
+
+[
+    {"id":"1","nombre":"PARIS","precio":"1900","imagen":"./assets/paris.jpg"},
+    {"id":"2","nombre":"AMALFI COAST","precio":"2900","imagen":"./assets/amalfi coast.jpg"},
+    {"id":"3","nombre":"SUIZA","precio":"3900","imagen":"./assets/suiza.jpg"}
+]

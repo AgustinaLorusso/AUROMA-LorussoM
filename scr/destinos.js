@@ -5,6 +5,7 @@ import { excursiones } from "./items.js";
 
 //DOM
 const destino = document.getElementById('destino');
+const form = document.getElementById('formulario');
 
 
 
@@ -42,9 +43,11 @@ function renderizarMuestra(){
     //BOTON AGREGAR AL CARRITO
     //BOTON
     const btnAgregar = document.createElement('button');
+    //btnAgregar.setAttribute('agregar',producto.id);
     btnAgregar.setAttribute('agregar',producto.id);
     btnAgregar.classList.add('btnAgregar')
     btnAgregar.addEventListener('click',agregarCarrito);
+   // btnAgregar.addEventListener('click',formulario);
     btnAgregar.textContent ='AGREGAR'
     
     //INSERTO
@@ -80,4 +83,43 @@ function agregarCarrito(e)
 }
 
 renderizarMuestra()
+
+/*function formulario(e){
+
+    const idProducto= e.target.getAttribute('agregar');
+    const producto = excursiones.find(productoElegido => productoElegido.id === parseInt(idProducto));
+
+    //estructura
+    const estructura = document.createElement('div');
+    estructura.classList.add('card', 'rounded-4', 'colorGrisClaro');
+
+    //titulo
+    const titulo = document.createElement('h5');
+    titulo.classList.add('text-center');
+    titulo.textContent=`${producto.nombre}`;
+
+    //texto
+    const text = document.createElement('p');
+    text.classList.add('text-center');
+    text.textContent="Cantidad de personas:";
+
+    //form
+    const formulario = document.createElement('form');
+    formulario.classList.add('d-flex','flex-row','justify-between')
+    const div = document.createElement('div');
+    const input = document.createElement('input');
+    const btnAgregar = document.createElement('button');
+    btnAgregar.textContent='Agregar';
+
+    //inserto
+    div.appendChild(input);
+    div.appendChild(btnAgregar);
+    formulario.appendChild(text);
+    formulario.append(div);
+    estructura.appendChild(titulo);
+    estructura.appendChild(formulario);
+    form.appendChild(estructura);
+
+
+}*/
 
