@@ -58,3 +58,18 @@
     height: 600px;
 }
 
+/*FORM*/
+#formulario{
+    display: none;
+}
+
+.formStyle{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+.formStyle1{
+    margin-left: 20%;
+}
+.formStyle2{
+    margin-right: 30%;
+}

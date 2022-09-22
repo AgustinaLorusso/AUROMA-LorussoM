@@ -13,8 +13,7 @@ let listaProductos =JSON.parse(sessionStorage.getItem('carrito'));
 function valor(){
     let valorCompra =0;
     listaProductos.forEach((element)=>{
-        const producto = excursiones.find(productoElegido => productoElegido.id === parseInt(element));
-        valorCompra = valorCompra+producto.precio;
+      valorCompra = valorCompra+element.valorReserva;
     })
     const msje=`PRECIO TOTAL = ${valorCompra}`;
     return(msje);
@@ -44,12 +43,16 @@ function EliminarDeCarrito(e){
         'La excursion se elimino del carrito',
         'success'
       )
+      //guarda nro de reserva 
       const idProdAEliminar = e.target.getAttribute('eliminar');
-      const posicionAEliminar=listaProductos.indexOf(idProdAEliminar)
+      console.log(idProdAEliminar)
+      const excursionEliminar = listaProductos.find(productoElegido =>productoElegido.nroReserva === parseInt(idProdAEliminar));
+      const posicionAEliminar=listaProductos.indexOf(excursionEliminar);
       listaProductos.splice((posicionAEliminar),1);
       //modifico el sessionStorage
       sessionStorage.setItem('carrito', JSON.stringify(listaProductos));
       renderizarCarrito();
+      contador();
     }
   })
    
@@ -61,25 +64,14 @@ function renderizarCarrito(){
     if ((listaProductos === null)){
         const carritoVacio= document.createElement('div');
         carritoVacio.textContent='CARRITO VACIO';
-        mostrarCarrito.appendChild(carritoVacio); 
+        mostrarCarrito.appendChild(carritoVacio);
     }else{
-        console.log(listaProductos)
-        //En el carrito de compras estan guardados los id (item es un id)
+        //En el carrito de compras estan guardados c/excursion
         mostrarCarrito.textContent = '';
-        //carritoSinDuplicados tiene un id de c/producto que hay en el carrito.
-        const carritoSinDuplicados = [...new Set(listaProductos)];
-        //recorro c/id que tine carrito sin duplicados
-        carritoSinDuplicados.forEach((item)=>{
+        listaProductos.forEach((element)=>{
             //Guardo la excursion que coincide con el id que se agrego
-            const miProducto= excursiones.find(productoElegido =>productoElegido.id === parseInt(item));
-
-            //Cantidad de unidades de un producto
-            //itemId son los id que estan guardados en el carrito de compras
-
-            let unidadesProducto =listaProductos.reduce((cantTotal,itemId)=>{ 
-                //funcion que toma a CantTotal como parametro anterior (empieza en 0)
-                return itemId === item ? cantTotal+=1 : cantTotal;
-            },0);
+            const miProducto= excursiones.find(productoElegido =>productoElegido.id === parseInt(element.id));
+    
             // Renderizo el CARRITO DE COMPRAS
             //ESTRUCTURA
             const cardCarrito = document.createElement('div');
@@ -94,12 +86,17 @@ function renderizarCarrito(){
             const tituloProducto = document.createElement('h5');
             tituloProducto.classList.add('card-title','text-center');
             tituloProducto.textContent=`${miProducto.nombre}`;
-            const informacion = document.createElement('p');
-            informacion.classList.add('text-center');
-            informacion.textContent=`CANTIDAD:${unidadesProducto}`
+            const informacion = document.createElement('div');
+            informacion.classList.add('d-flex','flex-column','align-items-center');
+            const datoCant=document.createElement('p')
+            datoCant.textContent=`Cantidad de pasajeros: ${element.cantPersonas}`
+            const datoFecha=document.createElement('p')
+            datoFecha.textContent=`Fecha: ${element.fecha}`
+            informacion.appendChild(datoCant);
+            informacion.appendChild(datoFecha);
             //BOTON PARA ELIMINAR
             const btnEliminar = document.createElement('button');
-            btnEliminar.setAttribute('eliminar',miProducto.id);
+            btnEliminar.setAttribute('eliminar',element.nroReserva);
             btnEliminar.addEventListener('click', EliminarDeCarrito);
             btnEliminar.textContent='ELIMINAR'
             //inserto
@@ -120,11 +117,39 @@ function renderizarCarrito(){
     
     //Estructura de donde se muesta valor total
     const valorTotal =  document.createElement('div');
-    valorTotal.classList.add('colorGrisClaro','w-75','rounded-4','my-2')
-    valorTotal.textContent=valor();
+    valorTotal.classList.add('colorGrisClaro','w-75','rounded-4','my-2','d-flex','flex-row','justify-content-between')
+    const mostrarValor=document.createElement('p');
+    mostrarValor.textContent=valor();
+    const btnCompraFinal = document.createElement('button');
+    btnCompraFinal.setAttribute('formCompra',listaProductos);
+    btnCompraFinal.textContent='COMPRAR';
+    btnCompraFinal.addEventListener('click',moverseA);
+    valorTotal.appendChild(mostrarValor);
+    valorTotal.appendChild(btnCompraFinal);
     mostrarCarrito.appendChild(valorTotal);
+    
    
 }
 
+function moverseA() {
+  window.location.href = "./formulario.html";
+}
 
-renderizarCarrito()
+//Funcion contador de carrito
+function contador(){
+  const contador=document.getElementById('contador');
+  contador.textContent='';
+  let cantEncarrito=document.createElement('p');
+  let cantItems=0;
+  if (listaProductos===null){
+    cantItems=0;
+  }else{
+    cantItems=listaProductos.length;
+  }
+  cantEncarrito.textContent=cantItems;
+  contador.appendChild(cantEncarrito);
+}
+
+
+renderizarCarrito();
+contador();
