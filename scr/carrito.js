@@ -62,9 +62,13 @@ function EliminarDeCarrito(e){
 //Carrito de compras
 function renderizarCarrito(){
     if ((listaProductos === null)){
-        const carritoVacio= document.createElement('div');
-        carritoVacio.textContent='CARRITO VACIO';
-        mostrarCarrito.appendChild(carritoVacio);
+      const div= document.createElement('div');
+      div.classList.add('estiloRedirigir','colorGrisClaro','d-flex','align-items-center','justify-content-center','mx-4');
+      const text=document.createElement('h5');
+      text.textContent='EL CARRITO ESTA VACIO'
+      div.appendChild(text);
+      mostrarCarrito.appendChild(div);
+      contador();
     }else{
         //En el carrito de compras estan guardados c/excursion
         mostrarCarrito.textContent = '';

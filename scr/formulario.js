@@ -149,6 +149,7 @@ function borrarHistoria(){
         'success'
     )
     mostrarFormPorExcursion();
+    contador();
 
 }
 
