@@ -37,7 +37,7 @@ function renderizarMuestra(){
     console.log(idProducto);
     //ESTRUCTURA
     const estructura = document.createElement('div');
-    estructura.classList.add('card','d-flex','flex-row','justify-content-around');
+    estructura.classList.add('card','d-flex','flex-row','justify-content-around','colorGrisClaro');
     // IMAGEN
     const estrImagen = document.createElement('div');
     estrImagen.classList.add('w-50');

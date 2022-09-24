@@ -78,7 +78,7 @@ function renderizarCarrito(){
             cardCarrito.classList.add('col','estiloCarrito','rounded-4','my-2');
             //IMAGEN
             const imgCarrito = document.createElement('img');
-            imgCarrito.classList.add('imgCarrito','rounded-start')
+            imgCarrito.classList.add('imgCarrito','py-2','rounded')
             imgCarrito.setAttribute('src', `.${miProducto.imagen}`);
             //BODY
             const cardCarritoBody = document.createElement('div');
@@ -117,10 +117,11 @@ function renderizarCarrito(){
     
     //Estructura de donde se muesta valor total
     const valorTotal =  document.createElement('div');
-    valorTotal.classList.add('colorGrisClaro','w-75','rounded-4','my-2','d-flex','flex-row','justify-content-between')
+    valorTotal.classList.add('gris','w-75','rounded-4','py-2','d-flex','flex-row','justify-content-between','mb-2')
     const mostrarValor=document.createElement('p');
     mostrarValor.textContent=valor();
     const btnCompraFinal = document.createElement('button');
+    btnCompraFinal.classList.add('rounded');
     btnCompraFinal.setAttribute('formCompra',listaProductos);
     btnCompraFinal.textContent='COMPRAR';
     btnCompraFinal.addEventListener('click',moverseA);

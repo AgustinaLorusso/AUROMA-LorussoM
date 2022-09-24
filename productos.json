@@ -1,7 +1,13 @@
 
 
 [
-    {"id":"1","nombre":"PARIS","precio":"1900","imagen":"./assets/paris.jpg"},
-    {"id":"2","nombre":"AMALFI COAST","precio":"2900","imagen":"./assets/amalfi coast.jpg"},
-    {"id":"3","nombre":"SUIZA","precio":"3900","imagen":"./assets/suiza.jpg"}
+    {"id":"1","nombre":"TOUR POR PARIS","precio":"1900","imagen":"./assets/paris.jpg","categoria1":"Francia","categoria2":"Culturales"},
+    {"id":"2","nombre":"NAVEGAR POR AMALFI COAST","precio":"2900","imagen":"./assets/amalfi coast.jpg","categoria1":"Italia","categoria2":"Acuaticas"},
+    {"id":"3","nombre":"ESQUIAR EN SUIZA","precio":"3900","imagen":"./assets/suiza.jpg","categoria1":"Suiza","categoria2":"Nieve"},
+    {"id":"4","nombre":"DIA DE YATE ENSANTORINI","precio":"4900","imagen":"./assets/santorini.jpg","categoria1":"Grecia","categoria2":"Acuaticas"},
+    {"id":"5","nombre":"VIAJE EN GLOBO POR ESTAMBUL","precio":"5900","imagen":"./assets/estambul.jpg","categoria1":"Turquia","categoria2":"Culturales"},
+    {"id":"6","nombre":"BARCO EN VENECIA","precio":"6900","imagen":"./assets/venecia.jpg","categoria1":"Italia","categoria2":"Acuaticas"},
+    {"id":"7","nombre":"GASTRONOMIA EN LYON","precio":"5900","imagen":"./assets/berlin.jpg","categoria1":"Francia","categoria2":"Gastronomicas"},
+    {"id":"8","nombre":"DIA DE PLAYA EN MALLORCA","precio":"5900","imagen":"./assets/mallorca.jpg","categoria1":"España","categoria2":"Acuaticas"},
+    {"id":"9","nombre":"TOUR POR BARCELONA","precio":"8900","imagen":"./assets/barcelona.jpg","categoria1":"España","categoria2":"Culturales"}
 ]

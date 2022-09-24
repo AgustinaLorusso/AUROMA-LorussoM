@@ -3,15 +3,18 @@
 .video{
     height: 75vh;
 }
+.black{
+    color: black;
+}
 .logo__img{
     width: 200px;
     height: 200px;
 }
 .colorGris{
-    background-color: #D9D9D9;
+    background-color: #f0efef;
 }
 .colorGrisClaro{
-    background-color: #fffcfc;
+    background-color: #c0b9b9;
 }
 .colorGrismedio{
     background-color: #c7c7c7;
@@ -28,12 +31,13 @@
     width: 15%;
 }
 .main{
-    background-color: white;
+    background-color: #e6e1e1;
     font-family: 'Libre Baskerville', serif;
 }
 
 .imgEstilo{
     height: 25rem;
+  
 }
 .cardEstilo{
     width: 25rem;
@@ -48,6 +52,9 @@
     justify-content: space-between;
     background-color: #D9D9D9;
     width: 40%;
+}
+.gris{
+    background-color: #D9D9D9;
 }
 .imgCarrito{
    height: 350px;
@@ -72,4 +79,7 @@
 }
 .formStyle2{
     margin-right: 30%;
+}
+.estiloRedirigir{
+    height: 90vh;
 }

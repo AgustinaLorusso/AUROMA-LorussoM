@@ -2,6 +2,7 @@
 import { excursiones } from "./items.js";
 
 
+
 class Input{
     constructor(name,type){
         this.name=name;
@@ -37,10 +38,12 @@ function mostrarFormPorExcursion(){
     if(listaProductos===null){
         detalle.textContent=''
         const div= document.createElement('div');
+        div.classList.add('estiloRedirigir','colorGrisClaro','d-flex','align-items-center','justify-content-center','mx-4');
         const text=document.createElement('h5');
         text.textContent='Segui comprando excursiones para tu viaje!'
         const volverAIndex=document.createElement('button');
         volverAIndex.textContent='Volver';
+        volverAIndex.classList.add('ms-5')
         volverAIndex.addEventListener('click',moverseA,false);
         div.appendChild(text);
         div.appendChild(volverAIndex);
@@ -103,7 +106,7 @@ function form(n){
 
     //ESTRUCTURA
     const estructura = document.createElement('form');
-    estructura.classList.add('rounded-4','formStyle','pb-1','pt-3','colorGrismedio','mb-2');
+    estructura.classList.add('rounded-4','formStyle','pb-1','pt-3','colorGrismedio','mb-5');
 
     //TITULO
     const titulo = document.createElement('p');
@@ -145,10 +148,25 @@ function borrarHistoria(){
         'La informacion de la compra llegara al mail ingresado',
         'success'
     )
-    then(moverseA());
-    //mostrarFormPorExcursion();
+    mostrarFormPorExcursion();
 
+}
+
+function contador(){
+    let listaProductos=JSON.parse(sessionStorage.getItem('carrito'));
+    const contador=document.getElementById('contador');
+    contador.textContent='';
+    let cantEncarrito=document.createElement('p');
+    let cantItems=0;
+    if (listaProductos===null){
+        cantItems=0;
+    }else{
+        cantItems=listaProductos.length;
+    }
+    cantEncarrito.textContent=cantItems;
+    contador.appendChild(cantEncarrito);
 }
 
 
 mostrarFormPorExcursion();
+contador();
